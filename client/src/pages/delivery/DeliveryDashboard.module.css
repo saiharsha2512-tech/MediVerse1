@@ -1,0 +1,358 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+/* ============================
+   DeliveryDashboard.module.css
+============================ */
+
+.page {
+  display: flex;
+  min-height: 100vh;
+  background: #f0f4ff;
+  font-family: 'Inter', sans-serif;
+}
+
+/* ---- Sidebar ---- */
+.sidebar {
+  width: 240px;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #0080FF 0%, #00C896 100%);
+  display: flex;
+  flex-direction: column;
+  padding: 1.75rem 1.25rem;
+  color: white;
+  flex-shrink: 0;
+  position: sticky;
+  top: 0;
+}
+
+.sidebarLogo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  font-size: 20px;
+  font-weight: 800;
+  margin-bottom: 2rem;
+  letter-spacing: 0.3px;
+}
+
+.sidebarLogoIcon {
+  font-size: 24px;
+}
+
+/* ---- Partner Info ---- */
+.partnerInfo {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.avatar {
+  width: 64px;
+  height: 64px;
+  background: rgba(255,255,255,0.25);
+  border: 3px solid rgba(255,255,255,0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0 auto 0.75rem;
+}
+
+.partnerName {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
+}
+
+.partnerRole {
+  font-size: 12px;
+  opacity: 0.8;
+  margin-bottom: 0.6rem;
+}
+
+.statusBadge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  border-radius: 20px;
+}
+
+/* ---- Nav ---- */
+.nav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  flex: 1;
+}
+
+.navItem {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-radius: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  color: rgba(255,255,255,0.85);
+}
+
+.navItem:hover {
+  background: rgba(255,255,255,0.15);
+}
+
+.navItemActive {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  font-weight: 600;
+}
+
+/* ---- Logout ---- */
+.logoutBtn {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.75rem 1rem;
+  background: rgba(255,255,255,0.12);
+  border: 1px solid rgba(255,255,255,0.25);
+  border-radius: 10px;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s ease;
+  font-family: 'Inter', sans-serif;
+  margin-top: 1rem;
+}
+
+.logoutBtn:hover {
+  background: rgba(255,255,255,0.22);
+}
+
+/* ---- Main Content ---- */
+.main {
+  flex: 1;
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+/* ---- Top Bar ---- */
+.topBar {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.pageTitle {
+  font-size: 26px;
+  font-weight: 800;
+  color: #111827;
+  margin-bottom: 0.2rem;
+}
+
+.pageSubtitle {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ---- Status Selector ---- */
+.statusSelector {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.statusLabel {
+  font-size: 13px;
+  font-weight: 600;
+  color: #374151;
+}
+
+.statusBtn {
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  border: 1.5px solid #e5e7eb;
+  background: white;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-family: 'Inter', sans-serif;
+}
+
+.statusBtn:hover {
+  border-color: #0080FF;
+  color: #0080FF;
+}
+
+.statusBtnActive {
+  border-color: transparent;
+}
+
+/* ---- Stats Grid ---- */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.statCard {
+  background: white;
+  border-radius: 16px;
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.statCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+}
+
+.statIcon {
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  flex-shrink: 0;
+}
+
+.statValue {
+  font-size: 22px;
+  font-weight: 800;
+  color: #111827;
+  line-height: 1;
+  margin-bottom: 0.2rem;
+}
+
+.statLabel {
+  font-size: 12px;
+  color: #9ca3af;
+  font-weight: 500;
+}
+
+/* ---- Info Card ---- */
+.infoCard {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.infoTitle {
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  margin-bottom: 1.25rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.infoGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.infoItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.infoLabel {
+  font-size: 11px;
+  color: #9ca3af;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.infoValue {
+  font-size: 14px;
+  color: #1f2937;
+  font-weight: 600;
+}
+
+/* ---- Empty State ---- */
+.emptyState {
+  text-align: center;
+  padding: 2.5rem 1rem;
+  color: #9ca3af;
+}
+
+.emptyIcon {
+  font-size: 40px;
+  margin-bottom: 0.75rem;
+  color: #d1d5db;
+}
+
+.emptyState p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #6b7280;
+  margin-bottom: 0.3rem;
+}
+
+.emptyState span {
+  font-size: 13px;
+}
+
+/* ---- Responsive ---- */
+@media (max-width: 1024px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .infoGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    display: none;
+  }
+
+  .main {
+    padding: 1.25rem;
+  }
+
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .topBar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

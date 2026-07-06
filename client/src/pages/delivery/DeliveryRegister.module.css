@@ -1,0 +1,23 @@
+/* DeliveryRegister extra styles */
+.registerCard {
+  max-width: 500px;
+}
+
+.twoCol {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.85rem;
+}
+
+.selectField {
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+@media (max-width: 480px) {
+  .twoCol {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+}

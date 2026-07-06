@@ -1,0 +1,209 @@
+.container {
+  width: 100%;
+  font-family: 'Inter', sans-serif;
+  padding-bottom: 2rem;
+  background-color: #f8fafc;
+  min-height: 100vh;
+}
+
+.header {
+  background: linear-gradient(135deg, #0d61e2, #18b584);
+  padding: 2rem 1.5rem 2.5rem 1.5rem;
+  border-bottom-left-radius: 24px;
+  border-bottom-right-radius: 24px;
+  color: white;
+}
+
+.headerTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.headerSubtitle {
+  font-size: 14px;
+  opacity: 0.9;
+  margin: 0;
+}
+
+.content {
+  padding: 1.5rem;
+  margin-top: -3rem; /* pull up over gradient */
+}
+
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.statCard {
+  border-radius: 12px;
+  padding: 1.25rem 0.5rem;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  border: 1px solid rgba(0,0,0,0.05);
+}
+
+.statBlue { background-color: #eaf2ff; border-color: #d1e2ff; }
+.statGreen { background-color: #eafaf1; border-color: #d1f4e0; }
+.statPink { background-color: #ffeaea; border-color: #ffd1d1; }
+
+.statCard h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 0.25rem 0;
+}
+
+.statCard p {
+  font-size: 11px;
+  color: #666;
+  margin: 0;
+}
+
+.tabsContainer {
+  display: flex;
+  background-color: #f1f5f9;
+  border-radius: 12px;
+  padding: 0.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.tabBtn {
+  flex: 1;
+  background: transparent;
+  border: none;
+  padding: 0.75rem 0;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #64748b;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.activeTab {
+  background-color: white;
+  color: #0f172a;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.appointmentList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.appointmentCard {
+  background: white;
+  border-radius: 16px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.03);
+  border: 1px solid #f0f0f0;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid #f1f5f9;
+  padding-bottom: 1rem;
+}
+
+.docInfo {
+  display: flex;
+  gap: 1rem;
+}
+
+.docAvatar {
+  width: 50px;
+  height: 50px;
+  background-color: #eef2ff;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+}
+
+.docName {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1e293b;
+  margin: 0 0 0.25rem 0;
+}
+
+.docSpecialty {
+  font-size: 12px;
+  color: #64748b;
+  margin: 0 0 0.5rem 0;
+}
+
+.apptMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  font-size: 11px;
+  color: #475569;
+}
+
+.apptMeta span {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.statusBadge {
+  background-color: #e0e7ff;
+  color: #4338ca;
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 10px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  text-transform: uppercase;
+}
+
+.cardActions {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.joinBtn {
+  background: linear-gradient(135deg, #0d61e2, #18b584);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 1;
+}
+
+.rescheduleBtn {
+  background: white;
+  color: #334155;
+  border: 1px solid #cbd5e1;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  flex: 1;
+}
+
+.cancelBtn {
+  background: transparent;
+  color: #ef4444;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+}
