@@ -50,8 +50,18 @@ app.use('/api/doctor', doctorApiRoutes);
 
 // Delivery Portal Routes
 app.use('/api/delivery', deliveryRoutes);
-app.get('/', (req, res) => {  res.send('MediVerse API is running...');
-});
+// Serve static client files in production
+if (process.env.NODE_ENV === 'production' || process.env.NODE_ENV === 'docker') {
+  app.use(express.static(path.join(__dirname, 'public/dist')));
+
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'public/dist', 'index.html'));
+  });
+} else {
+  app.get('/', (req, res) => {
+    res.send('MediVerse API is running...');
+  });
+}
 
 const PORT = process.env.PORT || 5000;
 
