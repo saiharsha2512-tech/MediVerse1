@@ -20,8 +20,22 @@ const deliveryPartnerSchema = new mongoose.Schema(
     availability: { type: Boolean, default: false },
     status: {
       type: String,
-      enum: ['Available', 'Busy', 'Offline'],
+      enum: ['Online', 'Offline', 'Busy', 'Available'],
       default: 'Offline',
+    },
+    rating: { type: Number, default: 0 },
+    totalDeliveries: { type: Number, default: 0 },
+    todayDeliveries: { type: Number, default: 0 },
+    weeklyDeliveries: { type: Number, default: 0 },
+    todayEarnings: { type: Number, default: 0 },
+    weeklyEarnings: { type: Number, default: 0 },
+    totalEarnings: { type: Number, default: 0 },
+    todayDistance: { type: Number, default: 0 },
+    weeklyDistance: { type: Number, default: 0 },
+    currentLocation: {
+      lat: { type: Number },
+      lng: { type: Number },
+      address: { type: String }
     },
   },
   { timestamps: true }

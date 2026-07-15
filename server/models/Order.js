@@ -56,6 +56,32 @@ const orderSchema = new mongoose.Schema({
     type: String,
     enum: ['Pending', 'Processing', 'Success', 'Shipped', 'Delivered', 'Cancelled'],
     default: 'Success'
+  },
+  deliveryPartnerId: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'DeliveryPartner'
+  },
+  distance: {
+    type: Number,
+    default: 0
+  },
+  earning: {
+    type: Number,
+    default: 0
+  },
+  acceptedAt: {
+    type: Date
+  },
+  deliveredAt: {
+    type: Date
+  },
+  deliveryStatus: {
+    type: String,
+    enum: ['Pending', 'Accepted', 'Picked Up', 'Delivered', 'Cancelled'],
+    default: 'Pending'
+  },
+  estimatedTime: {
+    type: String
   }
 }, { timestamps: true });
 

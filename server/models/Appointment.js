@@ -8,7 +8,8 @@ const appointmentSchema = new mongoose.Schema({
   appointmentDate: { type: String, required: true },
   appointmentTime: { type: String, required: true },
   mode: { type: String, enum: ['Video', 'Chat'], default: 'Video' },
-  status: { type: String, enum: ['pending', 'upcoming', 'completed', 'cancelled', 'rejected'], default: 'upcoming' },
+  status: { type: String, enum: ['pending', 'upcoming', 'completed', 'cancelled', 'rejected', 'confirmed'], default: 'upcoming' },
+  meetingLink: { type: String, default: '' },
   consultationNotes: { type: String, default: '' }
 }, { timestamps: true });
 
