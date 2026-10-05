@@ -1,3 +1,4 @@
+import { API_URL } from '../config/api';
 import React, { createContext, useState, useContext, useEffect } from 'react';
 import axios from 'axios';
 import toast from 'react-hot-toast';
@@ -17,7 +18,7 @@ export const CartProvider = ({ children }) => {
     const fetchCart = async () => {
       try {
         setLoading(true);
-        const res = await axios.get(`http://localhost:5000/api/cart/user/${userId}`);
+        const res = await axios.get(`${API_URL}/api/cart/user/${userId}`);
         if (res.data && res.data.items) {
           setCart(res.data.items);
         }
@@ -33,7 +34,7 @@ export const CartProvider = ({ children }) => {
   const addToCart = async (medicine, quantity = 1) => {
     try {
       const medicineId = medicine._id || medicine.id;
-      const res = await axios.post('http://localhost:5000/api/cart/add', {
+      const res = await axios.post(`${API_URL}/api/cart/add', {
         userId,
         medicineId,
         quantity
@@ -55,7 +56,7 @@ export const CartProvider = ({ children }) => {
 
   const updateQuantity = async (medicineId, quantity) => {
     try {
-      const res = await axios.put('http://localhost:5000/api/cart/update', {
+      const res = await axios.put(`${API_URL}/api/cart/update', {
         userId,
         medicineId,
         quantity
@@ -71,7 +72,7 @@ export const CartProvider = ({ children }) => {
 
   const removeItem = async (medicineId) => {
     try {
-      const res = await axios.delete(`http://localhost:5000/api/cart/remove/${medicineId}?userId=${userId}`);
+      const res = await axios.delete(`${API_URL}/api/cart/remove/${medicineId}?userId=${userId}`);
       if (res.data && res.data.items) {
         setCart(res.data.items);
         toast.success("Item removed");
@@ -83,7 +84,7 @@ export const CartProvider = ({ children }) => {
 
   const clearCart = async () => {
     try {
-      const res = await axios.delete(`http://localhost:5000/api/cart/clear/${userId}`);
+      const res = await axios.delete(`${API_URL}/api/cart/clear/${userId}`);
       if (res.data && res.data.cart) {
         setCart(res.data.cart.items);
       }
