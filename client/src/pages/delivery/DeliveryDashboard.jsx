@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -37,7 +38,7 @@ const DeliveryDashboard = () => {
 
   const fetchDashboardData = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/delivery/dashboard', {
+      const res = await axios.get(`${API_URL}/api/delivery/dashboard`, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -62,7 +63,7 @@ const DeliveryDashboard = () => {
     if (!partner) return;
     const newStatus = partner.status === 'Online' ? 'Offline' : 'Online';
     try {
-      const res = await axios.put('http://localhost:5000/api/delivery/status', { status: newStatus }, {
+      const res = await axios.put(`${API_URL}/api/delivery/status`, { status: newStatus }, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -82,7 +83,7 @@ const DeliveryDashboard = () => {
   const acceptOrder = async (id) => {
     setActionLoading(id);
     try {
-      const res = await axios.put(`http://localhost:5000/api/delivery/orders/${id}/accept`, {}, {
+      const res = await axios.put(`${API_URL}/api/delivery/orders/${id}/accept`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {
@@ -99,7 +100,7 @@ const DeliveryDashboard = () => {
   const updateOrderStatus = async (id, action) => {
     setActionLoading(id);
     try {
-      const res = await axios.put(`http://localhost:5000/api/delivery/orders/${id}/${action}`, {}, {
+      const res = await axios.put(`${API_URL}/api/delivery/orders/${id}/${action}`, {}, {
         headers: { Authorization: `Bearer ${token}` }
       });
       if (res.data.success) {

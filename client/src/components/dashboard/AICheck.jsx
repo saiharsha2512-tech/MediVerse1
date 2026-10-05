@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { FiSend, FiMic, FiMicOff, FiDownload, FiTrash2, FiMoon, FiSun } from 'react-icons/fi';
@@ -71,7 +72,7 @@ const AICheck = () => {
 
   const fetchHistory = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/ai/history/${userId}`);
+      const res = await axios.get(`${API_URL}/api/ai/history/${userId}`);
       if (res.data && res.data.length > 0) {
         setMessages(res.data);
       } else {
@@ -92,7 +93,7 @@ const AICheck = () => {
 
   const fetchHealthTips = async () => {
     try {
-      const res = await axios.get('http://localhost:5000/api/ai/tips');
+      const res = await axios.get(`${API_URL}/api/ai/tips');
       if (res.data) setHealthTips(res.data);
     } catch (error) {
       console.error("Error fetching health tips:", error);
@@ -102,7 +103,7 @@ const AICheck = () => {
   const clearHistory = async () => {
     if (!window.confirm("Are you sure you want to clear your chat history?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/ai/history/${userId}`);
+      await axios.delete(`${API_URL}/api/ai/history/${userId}`);
       setMessages([{
         _id: 'welcome',
         role: 'assistant',
@@ -187,7 +188,7 @@ const AICheck = () => {
 
     try {
       const endpoint = isRecording ? '/api/ai/voice' : '/api/ai/chat'; // Using voice endpoint if it was from voice, otherwise chat
-      const res = await axios.post(`http://localhost:5000${endpoint}`, {
+      const res = await axios.post(`${API_URL}${endpoint}`, {
         userId,
         message: userMsg.message
       });

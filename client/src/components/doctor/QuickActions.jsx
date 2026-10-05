@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import { FiVideo, FiEdit3, FiCalendar, FiUsers, FiAlertCircle } from 'react-icons/fi';
 import styles from '../../pages/doctor/DoctorDashboard.module.css';
 import { Link } from 'react-router-dom';

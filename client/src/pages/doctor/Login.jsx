@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import React, { useState } from 'react';
 import styles from '../../components/Login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -30,7 +31,7 @@ const Login = () => {
       
       const payload = { phone: phoneNumber, password };
 
-      const { data } = await axios.post('http://localhost:5000/api/doctor/login', payload);
+      const { data } = await axios.post(`${API_URL}/api/doctor/login`, payload);
       console.log('Login Response:', data);
 
       if (data.success) {

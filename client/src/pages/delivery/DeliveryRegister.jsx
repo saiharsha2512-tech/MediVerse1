@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import React, { useState } from 'react';
 import styles from './DeliveryLogin.module.css';
 import regStyles from './DeliveryRegister.module.css';
@@ -69,7 +70,7 @@ const DeliveryRegister = () => {
         state: form.state,
       };
 
-      const { data } = await axios.post('http://localhost:5000/api/delivery/register', payload);
+      const { data } = await axios.post(`${API_URL}/api/delivery/register`, payload);
 
       if (data.success) {
         login(data.deliveryPartner, data.token);

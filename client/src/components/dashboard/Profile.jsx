@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { useAuth } from '../../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
@@ -180,7 +181,7 @@ const Profile = () => {
         
         <div className="profile-avatar-wrapper">
           {profileData.profileImage ? (
-            <img src={`http://localhost:5000${profileData.profileImage}`} alt="Profile" className="profile-avatar" />
+            <img src={`${API_URL}${profileData.profileImage}`} alt="Profile" className="profile-avatar" />
           ) : (
             <div className="avatar-placeholder">{profileData.firstName?.charAt(0) || profileData.name?.charAt(0) || 'U'}</div>
           )}

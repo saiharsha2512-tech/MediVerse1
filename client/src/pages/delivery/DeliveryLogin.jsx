@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import React, { useState } from 'react';
 import styles from './DeliveryLogin.module.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -36,7 +37,7 @@ const DeliveryLogin = () => {
 
     try {
       setLoading(true);
-      const { data } = await axios.post('http://localhost:5000/api/delivery/login', {
+      const { data } = await axios.post(`${API_URL}/api/delivery/login`, {
         phone: phone.trim(),
         password,
       });

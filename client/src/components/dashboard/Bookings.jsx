@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
@@ -25,7 +26,7 @@ const Bookings = () => {
   const fetchAppointments = async () => {
     try {
       setLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/appointments/${userId}`);
+      const res = await axios.get(`${API_URL}/api/appointments/${userId}`);
       setAppointments(res.data);
     } catch (error) {
       toast.error('Failed to load appointments');
@@ -45,8 +46,8 @@ const Bookings = () => {
   const handleAction = async (id, action) => {
     try {
       const endpoint = action === 'cancel' 
-        ? `http://localhost:5000/api/appointments/cancel/${id}`
-        : `http://localhost:5000/api/appointments/reschedule/${id}`; // Simplified reschedule for demo
+        ? `${API_URL}/api/appointments/cancel/${id}`
+        : `${API_URL}/api/appointments/reschedule/${id}`; // Simplified reschedule for demo
       
       const payload = action === 'reschedule' 
         ? { appointmentDate: new Date().toISOString().split('T')[0], appointmentTime: '04:00 PM' } 

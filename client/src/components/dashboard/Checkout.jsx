@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
@@ -45,7 +46,7 @@ const Checkout = () => {
         price: item.medicineId.price
       }));
 
-      const res = await axios.post('http://localhost:5000/api/orders/create', {
+      const res = await axios.post(`${API_URL}/api/orders/create`, {
         userId: "mock-user-123", // In real app, get from auth context
         items,
         deliveryInfo: formData,
