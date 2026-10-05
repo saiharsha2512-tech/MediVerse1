@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import { FiVideo, FiMessageCircle, FiCheck, FiClock } from 'react-icons/fi';
 import styles from '../../pages/doctor/DoctorDashboard.module.css';
 
