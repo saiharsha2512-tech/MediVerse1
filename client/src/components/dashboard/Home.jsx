@@ -1,3 +1,4 @@
+import { API_URL } from '../config/api';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
@@ -26,7 +27,7 @@ const Home = () => {
 
   const fetchAppointments = async () => {
     try {
-      const res = await axios.get(`http://localhost:5000/api/appointments/${userId}`);
+      const res = await axios.get(`${API_URL}/api/appointments/${userId}`);
       // Find the first confirmed or upcoming appointment
       const upcoming = res.data.find(appt => appt.status === 'confirmed' || appt.status === 'upcoming');
       setUpcomingAppointment(upcoming);
