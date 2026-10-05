@@ -1,4 +1,4 @@
-import { API_URL } from '../config/api';
+import { API_URL } from '../../config/api';
 import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import { FiSend, FiMic, FiMicOff, FiDownload, FiTrash2, FiMoon, FiSun } from 'react-icons/fi';
