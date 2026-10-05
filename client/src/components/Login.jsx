@@ -1,3 +1,4 @@
+import { API_URL } from '../config/api';
 import React, { useState } from 'react';
 import styles from './Login.module.css';
 import { Link, useNavigate } from 'react-router-dom';
@@ -33,7 +34,7 @@ const Login = () => {
       const payload = { phoneNumber, password, role: accountType };
       console.log('Login request payload:', payload);
 
-      const response = await axios.post('http://localhost:5000/api/auth/login', payload);
+      const response = await axios.post(`${API_URL}/api/auth/login`, payload);
       
       console.log('Backend response:', response.data);
 
