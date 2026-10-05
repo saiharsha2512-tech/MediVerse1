@@ -1,7 +1,7 @@
 import { API_URL } from '../config/api';
 import axios from 'axios';
 
-const API_URL = `${API_URL}/api/profile';
+const PROFILE_API_URL = `${API_URL}/api/profile`;
 
 // Get token helper
 const getAuthConfig = () => {
@@ -59,12 +59,12 @@ const addMedicalHistory = async (historyData) => {
 };
 
 const updateMedicalHistory = async (id, historyData) => {
-  const response = await axios.put(`${API_URL}/history/${id}`, historyData, getAuthConfig());
+  const response = await axios.put(`${PROFILE_API_URL}/history/${id}`, historyData, getAuthConfig());
   return response.data;
 };
 
 const deleteMedicalHistory = async (id) => {
-  const response = await axios.delete(`${API_URL}/history/${id}`, getAuthConfig());
+  const response = await axios.delete(`${PROFILE_API_URL}/history/${id}`, getAuthConfig());
   return response.data;
 };
 
@@ -81,12 +81,12 @@ const uploadReport = async (formData) => {
 };
 
 const renameReport = async (id, reportName) => {
-  const response = await axios.put(`${API_URL}/reports/${id}`, { reportName }, getAuthConfig());
+  const response = await axios.put(`${PROFILE_API_URL}/reports/${id}`, { reportName }, getAuthConfig());
   return response.data;
 };
 
 const deleteReport = async (id) => {
-  const response = await axios.delete(`${API_URL}/reports/${id}`, getAuthConfig());
+  const response = await axios.delete(`${PROFILE_API_URL}/reports/${id}`, getAuthConfig());
   return response.data;
 };
 
