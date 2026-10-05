@@ -1,4 +1,4 @@
-import { API_URL } from '../config/api';
+import { API_URL } from '../../config/api';
 import { createContext, useState, useEffect, useContext } from 'react';
 
 const DeliveryAuthContext = createContext();
