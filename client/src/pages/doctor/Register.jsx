@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from '../../components/Login.module.css'; // Reusing exactly the same styling as Patient portal
@@ -69,7 +70,7 @@ const Register = () => {
         image: formData.image
       };
 
-      const response = await axios.post('http://localhost:5000/api/doctor/register', payload);
+      const response = await axios.post(`${API_URL}/api/doctor/register`, payload);
       
       if (response.data.success) {
         toast.success('Registration successful! Please log in.');
