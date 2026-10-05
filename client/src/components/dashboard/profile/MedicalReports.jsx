@@ -1,4 +1,4 @@
-import { API_URL } from '../../config/api';
+import { API_URL } from '../../../config/api';
 import React, { useState, useEffect, useRef } from 'react';
 import { FiDownload, FiTrash2, FiUploadCloud, FiFileText, FiImage, FiEdit2 } from 'react-icons/fi';
 import toast from 'react-hot-toast';

@@ -34,7 +34,7 @@ export const CartProvider = ({ children }) => {
   const addToCart = async (medicine, quantity = 1) => {
     try {
       const medicineId = medicine._id || medicine.id;
-      const res = await axios.post(`${API_URL}/api/cart/add', {
+      const res = await axios.post(`${API_URL}/api/cart/add`, {
         userId,
         medicineId,
         quantity
@@ -56,7 +56,7 @@ export const CartProvider = ({ children }) => {
 
   const updateQuantity = async (medicineId, quantity) => {
     try {
-      const res = await axios.put(`${API_URL}/api/cart/update', {
+      const res = await axios.put(`${API_URL}/api/cart/update`, {
         userId,
         medicineId,
         quantity
