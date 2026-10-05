@@ -56,48 +56,72 @@ const getProfile = async (req, res) => {
 // @access  Private
 const updateProfile = async (req, res) => {
   try {
-    console.log('--- updateProfile API called ---');
-    console.log('User ID:', req.user._id);
-    console.log('Request Payload:', req.body);
-
     const user = await User.findById(req.user._id);
 
     if (!user) {
-      return res.status(404).json({ message: "User not found" });
+      return res.status(404).json({ success: false, message: 'User not found' });
     }
 
-    const updates = { ...req.body };
-    delete updates._id;
-    delete updates.role;
-    delete updates.password;
+    // Only accept fields that belong to the editable patient profile.
+    // This prevents immutable/system fields from being sent back to MongoDB.
+    const allowedFields = [
+      'firstName', 'lastName', 'email', 'phoneNumber', 'dob', 'gender',
+      'bloodGroup', 'height', 'weight', 'address', 'city', 'state',
+      'country', 'pincode', 'occupation', 'maritalStatus',
+      'emergencyContactName', 'emergencyContactPhone',
+      'insuranceProvider', 'insuranceNumber'
+    ];
 
-    // Assign all fields from request body to the user object
-    Object.assign(user, updates);
-
-    // Maintain 'name' for backward compatibility
-    if (updates.firstName || updates.lastName) {
-       user.name = `${user.firstName || ''} ${user.lastName || ''}`.trim();
-    } else if (updates.name) {
-       user.name = updates.name;
+    for (const field of allowedFields) {
+      if (Object.prototype.hasOwnProperty.call(req.body, field)) {
+        user[field] = req.body[field];
+      }
     }
 
-    // Auto calc BMI if height and weight exist
-    if (user.height && user.weight) {
-      const heightInMeters = user.height / 100;
-      user.bmi = parseFloat((user.weight / (heightInMeters * heightInMeters)).toFixed(2));
+    // Keep the legacy name field synchronized with first/last name.
+    const fullName = `${user.firstName || ''} ${user.lastName || ''}`.trim();
+    if (fullName) {
+      user.name = fullName;
+    }
+
+    // Calculate BMI only when both values are valid.
+    const height = Number(user.height);
+    const weight = Number(user.weight);
+    if (height > 0 && weight > 0) {
+      const heightInMeters = height / 100;
+      user.bmi = Number((weight / (heightInMeters * heightInMeters)).toFixed(2));
+    } else {
+      user.bmi = undefined;
     }
 
     const updatedUser = await user.save();
-    console.log('MongoDB Update Result:', updatedUser);
-    console.log('--- updateProfile API end ---');
-    
+
     res.json({
-        success: true,
-        user: updatedUser
+      success: true,
+      user: updatedUser.toObject({ versionKey: false })
     });
   } catch (error) {
     console.error('Update Profile Error:', error);
-    res.status(500).json({ message: 'Server Error', error: error.message });
+
+    // Give the frontend a useful message for common validation/duplicate errors.
+    if (error.code === 11000) {
+      return res.status(409).json({
+        success: false,
+        message: 'That email or phone number is already in use.'
+      });
+    }
+
+    if (error.name === 'ValidationError') {
+      return res.status(400).json({
+        success: false,
+        message: Object.values(error.errors).map(e => e.message).join(', ')
+      });
+    }
+
+    res.status(500).json({
+      success: false,
+      message: 'Unable to update profile right now. Please try again.'
+    });
   }
 };
 
