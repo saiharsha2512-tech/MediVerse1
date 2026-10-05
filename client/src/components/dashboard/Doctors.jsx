@@ -1,3 +1,4 @@
+import { API_URL } from '../config/api';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { toast } from 'react-hot-toast';
@@ -22,7 +23,7 @@ const Doctors = () => {
   const fetchDoctors = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/doctors');
+      const res = await axios.get(`${API_URL}/api/doctors`);
       // Only show active/approved doctors
       const activeDoctors = res.data.filter(doc => doc.isApproved !== false);
       setDoctors(activeDoctors);
@@ -52,7 +53,7 @@ const Doctors = () => {
   const handleBookNow = async (doctor) => {
     try {
       // First check if user already has an active appointment with this doctor
-      const existingRes = await axios.get(`http://localhost:5000/api/appointments/${userId}`);
+      const existingRes = await axios.get(`${API_URL}/api/appointments/${userId}`);
       const activeAppointments = existingRes.data.filter(apt => 
         apt.doctorId === doctor._id && 
         (apt.status === 'pending' || apt.status === 'upcoming' || apt.status === 'confirmed')
@@ -78,7 +79,7 @@ const Doctors = () => {
         mode: 'Video'
       };
 
-      const res = await axios.post('http://localhost:5000/api/appointments/book', payload);
+      const res = await axios.post(`${API_URL}/api/appointments/book`, payload);
       if (res.data) {
         toast.success(`Appointment booked with ${doctor.name}`);
       }
