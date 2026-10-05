@@ -1,3 +1,4 @@
+import { API_URL } from '../config/api';
 import React, { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -23,9 +24,9 @@ const Medicines = () => {
   const fetchMedicines = useCallback(async () => {
     try {
       setLoading(true);
-      let url = 'http://localhost:5000/api/medicines';
+      let url = `${API_URL}/api/medicines`;
       if (activeCategory !== 'All') {
-        url = `http://localhost:5000/api/medicines/category/${encodeURIComponent(activeCategory)}`;
+        url = `${API_URL}/api/medicines/category/${encodeURIComponent(activeCategory)}`;
       }
       
       const res = await axios.get(url);
@@ -52,7 +53,7 @@ const Medicines = () => {
 
     try {
       setLoading(true);
-      const res = await axios.get(`http://localhost:5000/api/medicines/search?q=${query}`);
+      const res = await axios.get(`${API_URL}/api/medicines/search?q=${query}`);
       setMedicines(res.data);
       setActiveCategory('All');
     } catch (error) {
