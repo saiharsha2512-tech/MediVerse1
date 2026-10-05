@@ -93,7 +93,7 @@ const AICheck = () => {
 
   const fetchHealthTips = async () => {
     try {
-      const res = await axios.get(`${API_URL}/api/ai/tips');
+      const res = await axios.get(`${API_URL}/api/ai/tips`);
       if (res.data) setHealthTips(res.data);
     } catch (error) {
       console.error("Error fetching health tips:", error);
