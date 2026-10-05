@@ -1,3 +1,4 @@
+import { API_URL } from '../config/api';
 import { createContext, useState, useEffect, useContext } from 'react';
 
 const DeliveryAuthContext = createContext();
@@ -18,7 +19,7 @@ export const DeliveryAuthProvider = ({ children }) => {
     const verifyToken = async () => {
       if (deliveryToken) {
         try {
-          const response = await fetch('http://localhost:5000/api/delivery/profile', {
+          const response = await fetch(`${API_URL}/api/delivery/profile`, {
             headers: { Authorization: `Bearer ${deliveryToken}` },
           });
           const data = await response.json();
@@ -55,7 +56,7 @@ export const DeliveryAuthProvider = ({ children }) => {
   const logout = async () => {
     try {
       if (deliveryToken) {
-        await fetch('http://localhost:5000/api/delivery/logout', {
+        await fetch(`${API_URL}/api/delivery/logout`, {
           method: 'POST',
           headers: { Authorization: `Bearer ${deliveryToken}` },
         });
