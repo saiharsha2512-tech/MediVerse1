@@ -1,7 +1,8 @@
+import { API_URL } from '../../config/api';
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: '/api/doctor'
+  baseURL: `${API_URL}/api/doctor`
 });
 
 // Request interceptor to add the doctor token
