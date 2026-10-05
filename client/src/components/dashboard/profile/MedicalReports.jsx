@@ -1,3 +1,4 @@
+import { API_URL } from '../../config/api';
 import React, { useState, useEffect, useRef } from 'react';
 import { FiDownload, FiTrash2, FiUploadCloud, FiFileText, FiImage, FiEdit2 } from 'react-icons/fi';
 import toast from 'react-hot-toast';
@@ -142,7 +143,7 @@ const MedicalReports = () => {
             </div>
             
             <div className="list-item-actions">
-              <a href={`http://localhost:5000${report.fileUrl}`} target="_blank" rel="noreferrer" className="icon-btn" title="View/Download">
+              <a href={`${API_URL}${report.fileUrl}`} target="_blank" rel="noreferrer" className="icon-btn" title="View/Download">
                 <FiDownload size={18} />
               </a>
               <button className="icon-btn" onClick={() => handleRename(report._id, report.reportName)} title="Rename"><FiEdit2 size={18} /></button>
