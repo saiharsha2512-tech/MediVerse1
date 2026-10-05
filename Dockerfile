@@ -1,5 +1,5 @@
 # Build step for the client
-FROM node:18-alpine AS client-build
+FROM node:22-alpine AS client-build
 WORKDIR /app/client
 COPY client/package*.json ./
 RUN npm install
@@ -7,7 +7,7 @@ COPY client/ ./
 RUN npm run build
 
 # Production server
-FROM node:18-alpine
+FROM node:22-alpine
 WORKDIR /app/server
 COPY server/package*.json ./
 RUN npm install --production
