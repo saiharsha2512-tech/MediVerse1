@@ -1,6 +1,7 @@
+import { API_URL } from '../config/api';
 import axios from 'axios';
 
-const API_URL = 'http://localhost:5000/api/profile';
+const API_URL = `${API_URL}/api/profile';
 
 // Get token helper
 const getAuthConfig = () => {
